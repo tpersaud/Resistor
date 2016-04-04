@@ -6,17 +6,6 @@ using System.Threading.Tasks;
 
 namespace Resistor.Bands
 {
-    /// <summary>
-    /// ORDER WORKS IN REVERSSE ORDER:
-    ///     ORDER = 0, 100'S PLACE
-    ///     ORDER = 1, 10'S PLACE
-    ///     ORDER = 2, 1'S PLACE
-    ///     
-    /// 
-    ///     ORDER = 0, 10'S PLACE
-    ///     ORDER = 1, 1'S PLACE
-    ///     ORDER = 2, 1'S PLACE
-    /// </summary>
     public class Digit: Band
     {
         public int Order { get; set; }

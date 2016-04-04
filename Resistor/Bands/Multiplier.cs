@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Resistor.Bands
 {
     /// <summary>
-    /// NOTE: NUMBER OF ZEROS IN 10^X
+    /// NOTE: values are to the exponent of 10 (10^x)
     /// </summary>
     public class Multiplier:Band
     {

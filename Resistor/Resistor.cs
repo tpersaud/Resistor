@@ -71,7 +71,7 @@ namespace Resistor
             }
         }
 
-        public void CalculateResults()
+        private void CalculateResults()
         {            
             this.Ohm = (Digit * 10 ^ Multiplier);
 
