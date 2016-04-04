@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Resistor.Bands
 {
-    public abstract class Band
+    public class Band
     {
         public List<BandCode> Codes { get; set; }
 

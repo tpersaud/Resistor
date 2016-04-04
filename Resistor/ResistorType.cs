@@ -11,6 +11,7 @@ namespace Resistor
 
         public ResistorType(int count)
         {
+            Bands = new List<Band>();
             Validate.ValidateCount(count);
 
             Bands.AddRange(ConstructDigitBands(count));

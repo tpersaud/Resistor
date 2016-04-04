@@ -1,0 +1,50 @@
+﻿@model  Demo.Models.CalculationModel
+
+@{
+    Layout = "";
+    string calculations = String.Format("{0}Ω ± {1}%", Model.Ohm.ToString("#,##0"), Model.Tolerance*100);
+
+    if(Model.Temperature != null)
+    {
+        calculations = String.Format("{0} {1}ppm/C°", calculations, Model.Temperature);
+    }
+    
+    ViewBag.Calculations = calculations;
+    ViewBag.Confidences = String.Format("{0}Ω - {1}Ω", Model.MinConfidence.ToString("#,##0"), Model.MaxConfidence.ToString("#,##0"));
+}
+
+<br />
+<div id="results">
+    <div style="width: 50%; display: table;">
+        <div style="display: table-row">
+            <div style="display: table-cell;"> @Html.Label("Digit") </div>
+            <div style="display: table-cell;"> @Html.DisplayFor(x => x.Digit)</div>
+        </div>
+        <div style="display: table-row">
+            <div style="display: table-cell;"> @Html.Label("Multiplier") </div>
+            <div style="display: table-cell;"> @Html.DisplayFor(x => x.Multiplier)</div>
+        </div>
+        <div style="display: table-row">
+            <div style="display: table-cell;"> @Html.Label("Tolerance") </div>
+            <div style="display: table-cell;"> @Html.DisplayFor(x => x.Tolerance)</div>
+        </div>
+
+        @if(Model.Temperature != null)
+        {
+            <div style="display: table-row">
+                <div style="display: table-cell;"> @Html.Label("Temperature") </div>
+                <div style="display: table-cell;"> @Html.DisplayFor(x => x.Temperature)</div>
+            </div>        
+        }
+
+        <div style="display: table-row">
+            <div style="display: table-cell;"> @Html.Label("Calculations") </div>
+            <div style="display: table-cell;"> @ViewBag.Calculations </div>
+        </div>
+
+        <div style="display: table-row">
+            <div style="display: table-cell;"> @Html.Label("Confidence") </div>
+            <div style="display: table-cell;"> @ViewBag.Confidences</div>
+        </div>
+    </div>
+</div>

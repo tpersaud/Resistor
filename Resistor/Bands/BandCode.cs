@@ -31,6 +31,5 @@ namespace Resistor.Bands
         {
             return base.GetHashCode();
         }
-
     }
 }

@@ -1,0 +1,76 @@
+﻿@using System.Web.Mvc;
+
+@{
+    ViewBag.Title = "Main Section";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+            </p>
+        </div>
+    </section>
+}
+ 
+<div class="row">
+    <div id="main">
+            @Html.Label("Select Band Count")
+            @Html.DropDownList("BandDropdown", ViewBag.BandDropdown as List<SelectListItem>)
+            <br />
+            <div id="resistor-div">
+
+            </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $("#BandDropdown").change(function () {            
+            var selected = $(this).val();
+
+            if (selected != '') {
+                var url = '@Url.Action("Index", "Resistor")';
+                $("#resistor-div").load(url, { id: selected });
+            }
+            else {
+                $("#resistor-div").empty();
+            }
+
+            return false;
+        });
+
+        function calculate() {
+            var count = $("#count").val();
+            var arrayList = new Array(count);
+            
+            for (var i = 0; i < count; i++) {               
+
+                var id = "#" + i.toString();
+                var value = $(id).val();
+
+                if (value != '')
+                {
+                    arrayList[i] = value;
+                }
+            }
+
+            if (arrayList.length == count)
+            {
+                $("#BandDropdown").val("");
+                var url = '@Url.Action("Calculate", "Resistor")';
+                $("#resistor-div").load(url, { value: arrayList.join(",") });
+            }
+            else {
+                alert("All Bands Must Be Selected Before Calculation Can Begin.");
+            }
+
+            return false;
+        }
+
+    </script>
+}

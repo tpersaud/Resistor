@@ -16,7 +16,7 @@ namespace Resistor
         }
     }
 
-    public class Resistor: IResistor
+    public class Data
     {
         public int Digit { get; set; }
         public int Multiplier { get; set; }
@@ -25,7 +25,7 @@ namespace Resistor
         public long Ohm { get; set; }
         public Interval Confidence { get; set; }
 
-        public Resistor()
+        public Data()
         {
             this.Digit = 0;
             this.Multiplier = 0;
@@ -56,7 +56,12 @@ namespace Resistor
 
         private void ParseResistor(List<int> value)
         {
-            this.Digit = Parse.ParseDigits(value);
+            var digit = Parse.ParseDigits(value);
+
+            if (digit == 0)
+                throw new InvalidOperationException("Digit Cannot Be Zero");
+
+            this.Digit = digit;
             this.Multiplier = Parse.ParseMultiplier(value);
 
             if (value.Count > 3)
@@ -69,8 +74,8 @@ namespace Resistor
         }
 
         private void CalculateResults()
-        {            
-            this.Ohm = (Digit * 10 ^ Multiplier);
+        {
+            this.Ohm = long.Parse((Digit * Math.Pow(10, (Multiplier))).ToString());
 
             if (Tolerance == null)
                 this.Tolerance = 0.2;
@@ -144,10 +149,12 @@ namespace Resistor
             if (value.Count > 4)
                 max = 3;
 
-            for (int i = 0; i < max; i++)
+            for (int i =0; i < max; i++)
             {
-                var exp = max - i - 1;
-                result += (Convert.ToInt32(digit.GetValue(value[i])) * 10 ^ (exp));
+                var exponent = Math.Pow(10, (i));
+                var val = value[max - i - 1];
+                var d = val * exponent;
+                result = result + Int32.Parse(d.ToString());
             }
 
             return result;

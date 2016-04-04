@@ -1,0 +1,17 @@
+﻿@model  Demo.Models.ResistorModel
+
+@{
+    Layout = "";    
+}
+
+<br />
+<div id="resistor-dropdown-collection">
+    @for (int i = 0; i < Model.ResistorDropdownList.Count; i++)
+    {
+        @Html.Label(Model.ResistorDropdownList[i].Key)
+        @Html.DropDownList(i.ToString(), Model.ResistorDropdownList[i].Value as List<SelectListItem>, new {id = i.ToString() })
+        <br />
+    }
+    @Html.Hidden("count", Model.ResistorDropdownList.Count)
+    <button id="calculate" type="submit" onclick="calculate()">Calculate</button>
+</div>
