@@ -23,6 +23,5 @@ namespace Resistor.Tests
            var sut = new Tolerance();
            CollectionAssert.AreEqual(sut.Codes, toleranceColorList);
        }
-
     }
 }
