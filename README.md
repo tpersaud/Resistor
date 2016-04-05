@@ -6,3 +6,7 @@ This repository contains a class library designed to validate and calculate the 
 1. The Resistor Class Library
 2. The Resistor Class nUnit Tests
 3. A simple ASP.NET MVC project to display the functionality of the classes.
+
+##To Do List
+1. Finish Unit Tests
+2. Convert MVC project to a full SPA application.
