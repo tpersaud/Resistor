@@ -1,0 +1,63 @@
+﻿@model  Resistor.Web.Models.CalculationModel
+
+@{
+    Layout = "";
+}
+
+<div id="results">
+    <div class="row">
+        <div class="col-sm-4 text-right">
+            @Html.LabelFor(x => x.Digit)
+        </div>
+        <div class="col-sm-6 text-left">
+            @Html.DisplayFor(x => x.Digit)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 text-right">
+            @Html.LabelFor(x => x.Multiplier)
+        </div>
+        <div class="col-sm-6 text-left">
+            @Html.DisplayFor(x => x.Multiplier)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 text-right">
+            @Html.LabelFor(x => x.Tolerance)
+        </div>
+        <div class="col-sm-6 text-left">
+            @Html.DisplayFor(x => x.Tolerance)
+        </div>
+    </div>
+
+    @if (Model.Temperature != null)
+    {
+        <div class="row">
+            <div class="col-sm-4 text-right">
+                @Html.LabelFor(x => x.Temperature)
+            </div>
+            <div class="col-sm-6 text-left">
+                @Html.DisplayFor(x => x.Temperature)
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-sm-4 text-right">
+            @Html.LabelFor(x => x.Calculations)
+        </div>
+        <div class="col-sm-6 text-left">
+            @Html.DisplayFor(x => x.Calculations)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 text-right">
+            @Html.LabelFor(x => x.Confidence)
+        </div>
+        <div class="col-sm-6 text-left">
+            @Html.DisplayFor(x => x.Confidence)
+        </div>
+    </div>
+
+</div>
