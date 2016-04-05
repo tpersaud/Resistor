@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Resistor Decryption App";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@Html.Label("Select Band Count")</h2>
+        @Html.DropDownList("BandDropdown", ViewBag.BandDropdown as List<SelectListItem>)
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div id="resistor-section" class="container text-center">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/resistor.js"></script>
+
+<script type="text/javascript">
+    var bandUrl = '@Url.Action("Index", "Resistor")';
+    var calcUrl = '@Url.Action("Calculate", "Resistor")';
+    var count = $("#BandDropdown").val();
+</script>
+}
